@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./1.jpg" type="image/x-icon">
+
+  <title>2025 Calendar</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #0f3057, #71bfde);
+      color: #000000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    .calendar-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px; /* Space between the header and calendar */
+      width: 100%;
+    }
+
+    .calendar-header {
+      text-align: center;
+      color: #e0e0e0;
+    }
+
+    .calendar-header h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .calendar-header p {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .calendar {
+      display: grid;
+      grid-template-rows: auto;
+      grid-auto-flow: column;
+      gap: 20px;
+      justify-content: center;
+      overflow-x: auto;
+      padding: 10px;
+      max-width: 100%;
+    }
+
+    .month {
+      background: #fff;
+      color: #000;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      min-width: 200px; /* Ensure consistent size for each month */
+    }
+
+    .month h3 {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 20px;
+      color: #000000;
+    }
+
+    .month table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    .month th {
+      font-weight: bold;
+      padding: 5px;
+      background: #5bc9f4;
+    }
+
+    .month td {
+      padding: 5px;
+      color: #333;
+    }
+
+    .month td.today {
+      background: #ff5722;
+      color: #fff;
+      border-radius: 50%;
+    }
+
+    @media (max-width: 768px) {
+      .calendar {
+        grid-auto-flow: row;
+        grid-template-rows: repeat(2, 1fr);
+      }
+
+      .calendar-header h1 {
+        font-size: 28px;
+      }
+
+      .calendar-header p {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .calendar {
+        grid-template-columns: 1fr;
+        overflow-x: auto;
+      }
+
+      .calendar-header h1 {
+        font-size: 24px;
+      }
+
+      .calendar-header p {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="calendar-container">
+    <div class="calendar-header">
+      <h1>I AM ANUSHA REHMAN QURESHI</h1>
+      <p>2025 Calendar</p>
+    </div>
+    <div class="calendar">
+      <!-- January -->
+      <div class="month">
+        <h3>January</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Sun</th>
+              <th>Mon</th>
+              <th>Tue</th>
+              <th>Wed</th>
+              <th>Thu</th>
+              <th>Fri</th>
+              <th>Sat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td><td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td>
+            </tr>
+            <tr>
+              <td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td>
+            </tr>
+            <tr>
+              <td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td>
+            </tr>
+            <tr>
+              <td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td>
+            </tr>
+            <tr>
+              <td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td><td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- Repeat other months similarly -->
+    </div>
+  </div>
+
+  <script>
+    // Highlight today's date
+    const today = new Date();
+    const currentMonth = today.toLocaleString('default', { month: 'long' });
+    const currentDate = today.getDate();
+
+    const months = document.querySelectorAll('.month');
+    months.forEach(month => {
+      const monthName = month.querySelector('h3').textContent;
+      if (monthName === currentMonth) {
+        const days = month.querySelectorAll('td');
+        days.forEach(day => {
+          if (day.textContent == currentDate) {
+            day.classList.add('today');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
